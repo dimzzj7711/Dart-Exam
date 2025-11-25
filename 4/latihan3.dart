@@ -18,56 +18,56 @@ class BankAccount {
     }
   }
 
-  // Getter
+ 
   String get accountHolder => _accountHolder;
-  double get balance => _balance;  // Read-only, tidak ada setter!
+  double get balance => _balance; 
 
-  // Method deposit
+ 
   void deposit(double amount) {
     if (amount <= 0) {
-      print('❌ Jumlah deposit harus positif');
+      print(' Jumlah deposit harus positif');
       return;
     }
     _balance += amount;
-    print('✅ Deposit Rp${amount.toStringAsFixed(2)}. Saldo baru: Rp${_balance.toStringAsFixed(2)}');
+    print(' Deposit Rp${amount.toStringAsFixed(2)}. Saldo baru: Rp${_balance.toStringAsFixed(2)}');
   }
 
-  // Method withdraw dengan validasi PIN
+  
   bool withdraw(double amount, String pin) {
     if (pin != _pin) {
-      print('❌ PIN salah');
+      print(' PIN salah');
       return false;
     }
 
     if (amount <= 0) {
-      print('❌ Jumlah penarikan harus positif');
+      print(' Jumlah penarikan harus positif');
       return false;
     }
 
     if (amount > _balance) {
-      print('❌ Saldo tidak cukup. Saldo: Rp${_balance.toStringAsFixed(2)}');
+      print(' Saldo tidak cukup. Saldo: Rp${_balance.toStringAsFixed(2)}');
       return false;
     }
 
     _balance -= amount;
-    print('✅ Tarik Rp${amount.toStringAsFixed(2)}. Saldo baru: Rp${_balance.toStringAsFixed(2)}');
+    print(' Tarik Rp${amount.toStringAsFixed(2)}. Saldo baru: Rp${_balance.toStringAsFixed(2)}');
     return true;
   }
 
-  // Ganti PIN
+
   bool changePin(String oldPin, String newPin) {
     if (oldPin != _pin) {
-      print('❌ PIN lama salah');
+      print('PIN lama salah');
       return false;
     }
 
     if (newPin.length != 4) {
-      print('❌ PIN baru harus 4 digit');
+      print('PIN baru harus 4 digit');
       return false;
     }
 
     _pin = newPin;
-    print('✅ PIN berhasil diubah');
+    print('PIN berhasil diubah');
     return true;
   }
 
@@ -91,12 +91,12 @@ void main() {
   print('\n--- Transaksi ---');
   rekening.deposit(500.0);
   rekening.withdraw(200.0, '1234');
-  rekening.withdraw(200.0, '0000');  // PIN salah
-  rekening.withdraw(2000.0, '1234');  // Saldo tidak cukup
+  rekening.withdraw(200.0, '0000'); 
+  rekening.withdraw(2000.0, '1234'); 
 
   print('\n--- Ganti PIN ---');
-  rekening.changePin('0000', '5678');  // PIN lama salah
-  rekening.changePin('1234', '5678');  // Berhasil
+  rekening.changePin('0000', '5678');  
+  rekening.changePin('1234', '5678');  
 
   print('');
   rekening.cetakRekening();

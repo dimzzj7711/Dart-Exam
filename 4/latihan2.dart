@@ -18,12 +18,11 @@ class User {
     }
   }
 
-  // Getter
+ 
   String get name => _name;
   String get email => _email;
   int get age => _age;
 
-  // Computed getter
   bool get isAdult => _age >= 18;
 
   String get kategoriUsia {
@@ -34,7 +33,7 @@ class User {
 
   String get displayName => '$_name ($kategoriUsia, $_age)';
 
-  // Setter dengan validasi
+ 
   set email(String value) {
     if (!value.contains('@')) {
       throw Exception('Format email tidak valid');
@@ -50,9 +49,9 @@ class User {
   }
 
   void cetakProfil() {
-    print('👤 $displayName');
-    print('📧 $_email');
-    print('Status: ${isAdult ? "Dewasa ✅" : "Anak ❌"}');
+    print(' $displayName');
+    print(' $_email');
+    print('Status: ${isAdult ? "Dewasa " : "Anak "}');
   }
 }
 
@@ -69,12 +68,12 @@ void main() {
   try {
     user.email = 'emailtidakvalid';
   } catch (e) {
-    print('❌ $e');
+    print(' $e');
   }
 
   try {
     user.age = 150;
   } catch (e) {
-    print('❌ $e');
+    print(' $e');
   }
 }

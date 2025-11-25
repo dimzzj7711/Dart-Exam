@@ -15,12 +15,12 @@ class Category {
     }
   }
 
-  // Getter
+ 
   String get name => _name;
   String get icon => _icon;
   double get budget => _budget;
 
-  // Setter dengan validasi
+ 
   set budget(double value) {
     if (value < 0) {
       throw Exception('Budget tidak boleh negatif');
@@ -28,7 +28,7 @@ class Category {
     _budget = value;
   }
 
-  // Method
+
   bool isOverBudget(double spent) {
     return spent > _budget;
   }
@@ -46,8 +46,8 @@ void main() {
     budget: 500.0,
   );
 
-  makanan.cetakStatus(350.0);  // Masih dalam budget
-  makanan.cetakStatus(550.0);  // Melebihi budget
+  makanan.cetakStatus(350.0); 
+  makanan.cetakStatus(550.0);  
 
   // Test validasi
   try {
